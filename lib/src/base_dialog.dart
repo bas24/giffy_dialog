@@ -1,6 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:intro_views_flutter/custom_animation/animated_backgroud.dart';
+
 
 /// Defines variants of entry animations
 enum EntryAnimation {
@@ -139,20 +141,31 @@ class _BaseGiffyDialogState extends State<BaseGiffyDialog>
           ),
         ),
         Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(top: 16.0),
-                child: widget.title,
+          child: Stack(
+            children: [
+              AnimatedBackground(),
+              ClipRRect(
+                borderRadius: BorderRadius.only(
+                  bottomRight: Radius.circular(widget.cornerRadius),
+                  bottomLeft: Radius.circular(widget.cornerRadius),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(top: 16.0),
+                      child: widget.title,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: widget.description,
+                    ),
+                    _buildButtonsBar(context)
+                  ],
+                ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: widget.description,
-              ),
-              _buildButtonsBar(context)
             ],
-          ),
+          )
         ),
       ],
     );
@@ -172,18 +185,23 @@ class _BaseGiffyDialogState extends State<BaseGiffyDialog>
           ),
         ),
         Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(top: 16.0),
-                child: widget.title,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(3.0),
-                child: widget.description,
-              ),
-              _buildButtonsBar(context),
+          child: Stack(
+            children: [
+              AnimatedBackground(),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(top: 16.0),
+                    child: widget.title,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(3.0),
+                    child: widget.description,
+                  ),
+                  _buildButtonsBar(context),
+                ],
+              )
             ],
           ),
         ),

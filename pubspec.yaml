@@ -10,6 +10,8 @@ dependencies:
   flutter:
     sdk: flutter
   flare_flutter: ^2.0.1
+  intro_views_flutter:
+    git: git@bitbucket.org:bas24/intro_animated.git
   
 dev_dependencies:
   flutter_test:
